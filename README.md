@@ -8,6 +8,14 @@ Conventional filtering approaches such as 3D Gabor filters and Extended Morpholo
 
 ---
 
+## Workflow
+
+The overall processing pipeline illustrating SS-GVC integration within a hyperspectral classification framework is shown below.
+
+![SS-GVC Workflow](Workflow.png)
+
+---
+
 ## Key Contributions
 
 - Unified spatial–spectral feature extraction framework  
@@ -47,26 +55,49 @@ The SS-GVC filter has been evaluated on standard hyperspectral benchmark dataset
 - Salinas  
 - Pavia University  
 
-### Classification Models
+---
 
-- 3D Convolutional Neural Network (3D-CNN)  
-- ResNet-based architectures  
+## Classification Results
 
-### Classification Accuracy
+### Indian Pines Dataset
 
-- **Indian Pines**: up to **99.93% overall accuracy**, achieving the best performance across all evaluated filters and classifiers  
-- **Pavia University**: up to **99.65% accuracy** with 3D-CNN and **92.86%** with ResNet  
-- **Salinas**: up to **96.72% accuracy** with 3D-CNN and **96.69%** with ResNet  
+![Indian Pines Results](Indian pines.png)
 
-The proposed filter consistently outperforms 3D Gabor and EMP filters across datasets, demonstrating superior robustness and generalization.
+- Achieves up to **99.93% overall accuracy**, outperforming all baseline filters and classifiers.
 
-### Computational Efficiency
+---
 
-Across multiple runs on all datasets, SS-GVC exhibits lower average computational time compared to baseline filters while maintaining high classification accuracy, making it suitable for large-scale and near real-time hyperspectral analysis.
+### Pavia University Dataset
 
-### Qualitative Results
+![Pavia Results](Pavia.png)
 
-Classification maps generated using SS-GVC-enhanced features show improved spatial coherence, sharper class boundaries, and reduced salt-and-pepper noise compared to maps produced using traditional filtering techniques.
+- Achieves up to **99.65% accuracy** with 3D-CNN  
+- Achieves **92.86% accuracy** with ResNet-based architectures
+
+---
+
+### Salinas Dataset
+
+![Salinas Results](Salinas.png)
+
+- Achieves up to **96.72% accuracy** with 3D-CNN  
+- Achieves **96.69% accuracy** with ResNet
+
+---
+
+## Computational Performance
+
+The execution time comparison across datasets demonstrates the computational efficiency of the SS-GVC filter.
+
+![Execution Time Comparison](Execution Time.png)
+
+Across multiple runs, SS-GVC consistently requires lower average processing time than baseline filters while maintaining superior classification accuracy, making it suitable for large-scale and near real-time hyperspectral analysis.
+
+---
+
+## Qualitative Results
+
+Classification maps generated using SS-GVC-enhanced features exhibit improved spatial coherence, sharper class boundaries, and significantly reduced salt-and-pepper noise compared to results obtained using conventional filtering techniques.
 
 ---
 
