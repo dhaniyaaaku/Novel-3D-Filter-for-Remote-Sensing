@@ -1,55 +1,101 @@
+# SS-GVC: Spatial–Spectral Gradient Variation Correlation Filter
 
+## Overview
 
-# A Novel Spatial–Spectral Fusion Filter for Hyperspectral Image Classification
+SS-GVC (Spatial–Spectral Gradient Variation Correlation) is a spatial–spectral filtering framework developed to enhance feature extraction for hyperspectral image (HSI) classification. Hyperspectral images capture hundreds of spectral bands per pixel, providing detailed material information but also introducing high dimensionality, redundancy, and noise.
 
-This repository presents a novel spatial–spectral filtering framework designed for hyperspectral image (HSI) analysis. The proposed filter introduces a **simultaneous, multiplicative fusion** of spatial gradients, spectral variation, and spatial–spectral correlation to generate highly discriminative feature representations.
+Conventional filtering approaches such as 3D Gabor filters and Extended Morphological Profiles (EMP) often process spatial and spectral information independently or combine them using heuristic strategies, which limits their ability to model complex spatial–spectral dependencies. SS-GVC addresses this challenge by simultaneously fusing spatial gradients, spectral variation, and local spatial–spectral correlation through a mathematically grounded multiplicative formulation.
 
-Unlike traditional hyperspectral feature extraction methods that process spatial and spectral information sequentially, this work explicitly models their interaction within a unified mathematical formulation.
-
-
+---
 
 ## Key Contributions
 
-- First-of-its-kind **simultaneous spatial–spectral fusion filter**
-- Explicit modeling of:
-  - Spatial edge strength
-  - Spectral heterogeneity
-  - Local spectral–spatial consistency
-- Lightweight and interpretable alternative to deep feature extractors
-- Strong performance under **limited labeled data**
-- Computationally efficient compared to EMP and 3D Gabor filters
+- Unified spatial–spectral feature extraction framework  
+- Simultaneous computation of gradient, variation, and correlation descriptors  
+- Novel multiplicative fusion strategy for enhanced discriminative representation  
+- Improved edge preservation and spectral continuity  
+- Computationally efficient design suitable for large hyperspectral scenes  
+- Robust performance across multiple benchmark datasets  
 
 ---
 
-## Experimental Setup
+## Methodology
 
-**Datasets**
-- Indian Pines
-- Pavia University
-- Salinas Scene
+At each pixel location \((i, j)\), the SS-GVC filter computes three complementary descriptors:
 
-**Baseline Filters**
-- 3D Gabor Wavelet Filters
-- 3D Extended Morphological Profiles (EMP)
+### Spatial–Spectral Gradient Magnitude (G)
 
-**Classifiers**
-- 3D Convolutional Neural Network (3D CNN)
-- Residual Neural Network (ResNet)
+Captures local edge strength and spatial structure across spectral bands. Gradient magnitudes are computed for each band using horizontal and vertical differences and aggregated across the spectral dimension to emphasize spatial transitions and object boundaries.
 
----
+### Spectral Variation (V)
 
-## Results Highlights
+Represents the standard deviation of reflectance values across all spectral bands at a given pixel. This component quantifies spectral heterogeneity and enhances discrimination between materials with subtle spectral differences.
 
-- Indian Pines: **99.93% accuracy (ResNet)**
-- PaviaU: **99.86% accuracy (3D CNN)**
-- Consistently lowest computational time among compared filters
-- Superior boundary preservation and reduced over-smoothing
+### Spatial–Spectral Correlation (C)
 
-
+Measures the similarity between the spectral signature of a pixel and its neighboring pixels using cosine similarity within an 8-connected neighborhood. This component preserves local spatial–spectral consistency and contextual information.
 
 ---
 
-## ⚙️ Setup Instructions
+## Multiplicative Fusion Strategy
 
-```bash
-pip install -r requirements.txt
+The final feature response is obtained by multiplicatively combining the three descriptors:
+
+\[
+\text{Fused Feature} = G \times V \times (1 + C)
+\]
+
+This fusion mechanism selectively amplifies informative regions that exhibit strong structural variation, spectral diversity, and local correlation, while suppressing noise and redundancy.
+
+---
+
+## Experimental Results
+
+The SS-GVC filter has been evaluated on standard hyperspectral benchmark datasets and compared with traditional filtering techniques such as 3D Gabor and 3D Extended Morphological Profiles (EMP).
+
+### Datasets
+
+- Indian Pines  
+- Salinas  
+- Pavia University  
+
+### Classification Models
+
+- 3D Convolutional Neural Network (3D-CNN)  
+- ResNet-based architectures  
+
+### Classification Accuracy
+
+- **Indian Pines**: up to **99.93% overall accuracy**, achieving the best performance across all evaluated filters and classifiers  
+- **Pavia University**: up to **99.65% accuracy** with 3D-CNN and **92.86%** with ResNet  
+- **Salinas**: up to **96.72% accuracy** with 3D-CNN and **96.69%** with ResNet  
+
+The proposed filter consistently outperforms 3D Gabor and EMP filters across datasets, demonstrating superior robustness and generalization.
+
+### Computational Efficiency
+
+Across multiple runs on all datasets, SS-GVC exhibits lower average computational time compared to baseline filters while maintaining high classification accuracy, making it suitable for large-scale and near real-time hyperspectral analysis.
+
+### Qualitative Results
+
+Classification maps generated using SS-GVC-enhanced features show improved spatial coherence, sharper class boundaries, and reduced salt-and-pepper noise compared to maps produced using traditional filtering techniques.
+
+---
+
+## Applications
+
+SS-GVC is applicable to a wide range of hyperspectral imaging tasks, including:
+
+- Precision agriculture and crop monitoring  
+- Environmental monitoring and land-use mapping  
+- Disaster response and damage assessment  
+- Urban planning and smart city analysis  
+- Mineral and geological exploration  
+- Defense and surveillance  
+- Medical and industrial hyperspectral imaging  
+
+---
+
+## Integration
+
+The SS-GVC filter is designed to integrate seamlessly with existing hyperspectral processing pipelines and can be used as a preprocessing or feature enhancement module prior to classification using deep learning or traditional machine learning models.
