@@ -2,7 +2,7 @@
 
 ## Overview
 
-SS-GVC (Spatial–Spectral Gradient Variation Correlation) is a spatial–spectral filtering framework developed to enhance feature extraction for hyperspectral image (HSI) classification. Hyperspectral images capture hundreds of spectral bands per pixel, providing detailed material information but also introducing high dimensionality, redundancy, and noise.
+SS-GVC (Spatial–Spectral Gradient Variation Correlation) is a novel spatial–spectral filtering framework developed to enhance feature extraction for hyperspectral image (HSI) classification. Hyperspectral images capture hundreds of spectral bands per pixel, providing detailed material information but also introducing high dimensionality, redundancy, and noise.
 
 Conventional filtering approaches such as 3D Gabor filters and Extended Morphological Profiles (EMP) often process spatial and spectral information independently or combine them using heuristic strategies, which limits their ability to model complex spatial–spectral dependencies. SS-GVC addresses this challenge by simultaneously fusing spatial gradients, spectral variation, and local spatial–spectral correlation through a mathematically grounded multiplicative formulation.
 
@@ -34,18 +34,6 @@ Represents the standard deviation of reflectance values across all spectral band
 ### Spatial–Spectral Correlation (C)
 
 Measures the similarity between the spectral signature of a pixel and its neighboring pixels using cosine similarity within an 8-connected neighborhood. This component preserves local spatial–spectral consistency and contextual information.
-
----
-
-## Multiplicative Fusion Strategy
-
-The final feature response is obtained by multiplicatively combining the three descriptors:
-
-\[
-\text{Fused Feature} = G \times V \times (1 + C)
-\]
-
-This fusion mechanism selectively amplifies informative regions that exhibit strong structural variation, spectral diversity, and local correlation, while suppressing noise and redundancy.
 
 ---
 
