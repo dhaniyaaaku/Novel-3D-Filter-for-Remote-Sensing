@@ -21,23 +21,6 @@ Unlike traditional hyperspectral feature extraction methods that process spatial
 
 ---
 
-## Method Overview
-
-Given a hyperspectral cube \( X \in \mathbb{R}^{H \times W \times B} \), the filter computes a feature response at each pixel as:
-
-\[
-f(i,j) = G(i,j) \times V(i,j) \times \left(1 + C(i,j)\right)
-\]
-
-Where:
-- **G** captures spatial–spectral gradients (edges and boundaries)
-- **V** captures spectral variation (material diversity)
-- **C** captures neighborhood spectral correlation (context consistency)
-
-This multiplicative interaction enhances informative regions while suppressing noise and false responses.
-
----
-
 ## Experimental Setup
 
 **Datasets**
