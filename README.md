@@ -12,7 +12,7 @@ Conventional filtering approaches such as 3D Gabor filters and Extended Morpholo
 
 The overall processing pipeline illustrating SS-GVC integration within a hyperspectral classification framework is shown below.
 
-![SS-GVC Workflow](Workflow.png)
+<img src="results/Workflow.png" width="750"/>
 
 ---
 
@@ -61,7 +61,7 @@ The SS-GVC filter has been evaluated on standard hyperspectral benchmark dataset
 
 ### Indian Pines Dataset
 
-![Indian Pines Results](Indian pines.png)
+<img src="results/Indian pines.png" width="600"/>
 
 - Achieves up to **99.93% overall accuracy**, outperforming all baseline filters and classifiers.
 
@@ -69,7 +69,7 @@ The SS-GVC filter has been evaluated on standard hyperspectral benchmark dataset
 
 ### Pavia University Dataset
 
-![Pavia Results](Pavia.png)
+<img src="results/Pavia.png" width="600"/>
 
 - Achieves up to **99.65% accuracy** with 3D-CNN  
 - Achieves **92.86% accuracy** with ResNet-based architectures
@@ -78,7 +78,7 @@ The SS-GVC filter has been evaluated on standard hyperspectral benchmark dataset
 
 ### Salinas Dataset
 
-![Salinas Results](Salinas.png)
+<img src="results/Salinas.png" width="600"/>
 
 - Achieves up to **96.72% accuracy** with 3D-CNN  
 - Achieves **96.69% accuracy** with ResNet
@@ -89,7 +89,7 @@ The SS-GVC filter has been evaluated on standard hyperspectral benchmark dataset
 
 The execution time comparison across datasets demonstrates the computational efficiency of the SS-GVC filter.
 
-![Execution Time Comparison](Execution Time.png)
+<img src="results/Execution Time.png" width="600"/>
 
 Across multiple runs, SS-GVC consistently requires lower average processing time than baseline filters while maintaining superior classification accuracy, making it suitable for large-scale and near real-time hyperspectral analysis.
 
